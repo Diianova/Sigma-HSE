@@ -118,9 +118,8 @@ $(function(){
     // Scroll user down to the first section
     var btn = $('.js-banner-btn');
     var pageHead = ($('header').height());
-
     btn.on('click',function(e){
-        $('html,body').animate({scrollTop: pageHead}, 1500);
+        $('html,body').animate({scrollTop: pageHead }, 1500);
     });
 
     //Ttriangle button animation
