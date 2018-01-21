@@ -1,0 +1,40 @@
+@mixin underline-text($color){
+	display: inline-block;
+    &:after{
+      content: "";
+      margin: 12px 0;
+      display: block;
+      background: $color;
+      height: 3px;
+	      @include xs-block{
+	        margin: 6px 0;
+	        height: 2px;
+		}
+	}
+    a{
+      color: ($color);
+    }
+}
+
+@mixin link-hover($color){
+  &:after {
+    content:'';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: $color;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s;
+  }
+
+  &:hover {
+    &:after {
+      transform-origin: bottom left;
+      transform: scaleX(1);
+    }
+  }
+}
+

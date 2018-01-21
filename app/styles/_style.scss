@@ -1,0 +1,1026 @@
+@include reset();
+
+a{
+  text-decoration: none;
+}
+.container{
+    @include wrapper;
+}
+.read-more-btn{
+  @extend %WS-bold;
+  position: relative;
+  display: inline-block;
+  padding: 20px 0;
+  font-size: 24px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  @include md-block{
+    font-size: 16px;
+  }
+  @include s-block{
+    font-size: 12px;
+  }
+  &_white{
+    @include underline-text(#fff);
+  }
+  &_red{
+    @include underline-text(#8E0000);
+    transition: all .3s;
+    &:hover{
+      a{
+        color: #660000;
+      }
+      &:after{
+        background: #660000;
+      }
+    }
+  }
+  &_yellow{
+    a{
+      color: #D48604;
+      i{
+        @extend %WS-regular;
+        font-size: 20px;
+        @include lg-block{
+          font-size: 16px;
+        }
+        @include sm-block{
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+.header{
+  background-image: linear-gradient(-220deg,rgba(212,146,4,.98) 4%,#8E0000 92%);
+
+  .logo{
+    background-image: url(../images/touch/sigma-logo.png);
+    background-size: cover;
+    background-position: center;
+    margin: 0 15px;
+    margin-top: -20px;
+    width: 237px;
+    height: 81px;
+    flex-shrink: 0;
+
+    @include md-block{
+      margin-top: 0;
+    }
+    @include s-block{
+      padding: 0 15px;
+      width: 200px;
+      height: 68px;
+    }
+    @include xs-block{
+      width: 180px;
+      height: 60px;
+    }
+  }
+  .top-nav{
+    @extend %WS-light;
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 1em;
+    color: #FFF;
+    @include s-block{
+      padding: 10px 10px 0;
+      justify-content: space-around;
+    }
+
+    &__item{
+      position: relative;
+      display: inline-block;
+      padding: 0 15px;
+      transition: font-size .3s;
+      @include s-block{
+        padding: 0;
+      }
+
+      &:first-child{
+        background-image: url(../images/touch/magnifying-glass.png);
+        background-position: center left;
+        background-repeat: no-repeat;
+        background-size: 14px;
+        padding-left: 30px;
+      }
+      &:last-child{
+        background-image: url(../images/touch/contact-arrow.png);
+        background-position: 55% 50%;
+        background-repeat: no-repeat;
+        @include sm-block{
+          background-position: 75% 50%;
+        }
+      }
+      &:nth-child(-n+3){
+        padding-right: 40px;
+        border-right: 1px solid rgba(255,255,255,1);
+        transition: color .3s;
+        &:hover{
+          a{
+            color: #d48604;
+          }
+        }
+        @include sm-block{
+          padding: 0 15px;
+        }
+        @include s-block{
+          padding: 0;
+          border-right: 0;
+        }
+      }
+
+      .flag{
+        background-image: url(../images/down-arrow-white.svg);
+        background-position: center right;
+        background-repeat: no-repeat;
+        margin-right: 30px;
+        padding-right: 25px;
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+        @include sm-block{
+          margin-right: 0;
+          padding-right: 0;
+        }
+        @include xs-block{
+          background-image: none;
+        }
+      }
+
+      &:last-child{
+        align-items: center;
+        background-color: #D48604;
+        transition: all .3s;
+        @include sm-block{
+          padding-right: 45px;
+        }
+        @include s-block{
+          padding: 0;
+          background: transparent;
+        }
+        a{
+          display: inline-block;
+          padding: 15px 95px 15px 15px;
+        }
+        &:hover{
+          background-color: #e19005;
+        }
+      }
+
+      a{
+        color: #ffffff;
+      }
+    }
+  }
+
+  &__menu{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: no-wrap;
+    @include xs-block{
+      padding-top: 10px;
+    }
+  }
+}
+.header__mob_bg{
+  background: #c67407;
+}
+.main-banner{
+  font-size: 14px;
+  @include s-block{
+    font-size: 7px;
+  }
+
+  h1{
+    @extend %WS-ebold;
+    margin: 1.5em 0 1em;
+    max-width: 1000px;
+    letter-spacing: .5px;
+    font-size: 4.5em;
+    text-transform: uppercase;
+    color: #FFF;
+  }
+  &__info{
+    @extend %WS-regular;
+    margin-bottom: 3.8em;
+    max-width: 790px;
+    line-height: 2em;
+    font-size: 1.3em;
+    color: #FFF;
+    @include md-block{
+      max-width: 500px;
+    }
+    @include s-block{
+      max-width: 400px;
+    }
+  }
+  &__link{
+    text-align: center;
+    cursor: pointer;
+  }
+  &__btn{
+    width: 80px;
+    height: 44px;
+  }
+}
+
+.lang{
+  display: none;
+  position: absolute;
+  margin-left: -38px;
+  padding-top: 5px;
+  @include md-block{
+    padding-top: 30px;
+  }
+  @include s-block{
+    padding-top: 15px;
+  }
+  @include xs-block{
+    flex-direction: column;
+    margin-left: -5px;
+  }
+
+  &__item{
+    @extend %WS-bold;
+    padding: 5px;
+    background-color: #d48604;
+    margin: 3px;
+    transition: all .3s;
+    &:hover{
+      transform: scale(1.1);
+      font-size: 1em;
+    }
+  }
+  &_show{
+    display: flex;
+    z-index: 100;
+  }
+}
+
+.main-nav{
+  @extend %WS-regular;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  list-style-type: none;
+  padding-right: 70px;
+  font-size: 1em;
+  color: #ffffff;
+  align-self: flex-end;
+  @include lg-block{
+    z-index: 10;
+    padding-right: 0;
+    letter-spacing: 0;
+  }
+  @include md-block{
+    display: none;
+    position: absolute;
+    top: 110px;
+    width: 100%;
+    left: 0;
+    padding-top: 26px;
+    overflow: hidden;
+  }
+  @include s-block{
+    top: 80px;
+  }
+  &_show {
+    display: block;
+    transition: .5s;
+  }
+  &__list{
+    display: flex;
+    text-transform: uppercase;
+    @include md-block{
+      padding: 20px 30px 30px;
+      flex-direction: column;
+      background: linear-gradient(to top, #8e0000, #c67407);
+      font-size: 18px;
+    }
+    @include s-block{
+      padding: 20px 15px 30px;
+    }
+
+    a{
+      color: #ffffff;
+    }
+  }
+  &__item{
+    padding: 0 1em;
+    taransition: all .3s;
+    @include lg-block{
+      padding: 0 .8em;
+    }
+    @include md-block{
+      padding: 10px 0;
+    }
+    &:hover{
+      transform: scale(1.05, 1.05);
+      @include md-block{
+        transform: none;
+      }
+    }
+    a{
+      &:hover{
+        &:after{
+          content: "";
+          margin-top: 8px;
+          display: block;
+          height: 3px;
+          background-color: #D48604;
+        }
+      }
+    }
+    &_active{
+      transform: scale(1.05, 1.05);
+      @include md-block{
+        transform: none;
+      }
+      a{
+        &:after{
+          content: "";
+          margin-top: 8px;
+          display: block;
+          height: 3px;
+          background-color: #D48604;
+        }
+      }
+    }
+  }
+}
+.menu-btn{
+  display: none;
+  position: absolute;
+  right: 30px;
+  top: 77px;
+  justify-content: center;
+  align-items: center;
+  box-sizing: content-box;
+  width: 30px;
+  height: 30px;
+  padding-right: 15px;
+  background: 0;
+  border: 0;
+  user-select: none;
+  outline: 0;
+
+  @include md-block{
+    display: flex;
+    cursor: pointer;
+  }
+  @include s-block{
+    top: 53px;
+    right: 5px;
+  }
+  @include xs-block{
+    top: 59px;
+  }
+  &__icon{
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 3px;
+    vertical-align: bottom;
+    background: #ffffff;
+    transition: background .3s .5s;
+
+    &:before{
+      top: 10px;
+    }
+    &:after{
+      top: -10px;
+    }
+    &:before, &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: #ffffff;
+      transform-origin: 50% 50%;
+      transition: top .3s .3s,transform .3s;
+    }
+
+    &_show {
+      background-color: transparent;
+      &:before{
+        transform: rotate3d(0,0,1,45deg);
+      }
+      &:after{
+        transform: rotate3d(0,0,1,-45deg);
+      }
+      &:before, &:after{
+        transition: top .3s,transform .3s .5s;
+        top: 0;
+      }
+    }
+  }
+}
+.about-us{
+  padding: 122px 0;
+  background-image: linear-gradient(-90deg,#FFF 0,#F5F5F5 91%);
+  &__wrapper{
+    @include row-flex();
+  }
+  &__header{
+    @extend %WS-bold;
+    text-transform: uppercase;
+    font-size: 60px;
+    color: #D48604;
+    @include s-block{
+      font-size: 26px;
+    }
+    &:after{
+      content: "";
+      margin: 52px 0 8px;
+      display: block;
+      height: 4px;
+      background: #D48604;
+      max-width: 182px;
+      @include s-block{
+        max-width: 130px;
+      }
+      @include s-block{;
+        max-width: 100px;
+      }
+    }
+  }
+  .about-info{
+    @include col();
+    @include size(8);
+    @include size-md(10);
+    @include size-s(12);
+
+    &__p{
+      @extend %WS-regular;
+      padding: 30px 0;
+      font-size: 22px;
+      @include s-block{
+        font-size: 18px;
+      }
+    }
+  }
+}
+.event{
+  background-color: #930046;
+  background-image: url(../images/touch/event-background.png);
+  background-size: cover;
+  padding: 130px 0;
+  color: #fff;
+
+  &__wrapper{
+    @include row-flex();
+    align-items: center;
+  }
+
+  .event-about{
+    @include col();
+    @include size(7);
+    @include size-md(8);
+    @include size-sm(12);
+    @include shift-right(0.5);
+    @include shift-sm-right(0);
+    font-size: 16px;
+    @include s-block{
+      font-size: 14px;
+    }
+
+    &__sub-title{
+      @extend %WS-regular;
+      font-size: 1.5em;
+    }
+    &__title{
+      @extend %WS-bold;
+      padding-bottom: 36px;
+      font-size: 3em;
+      line-height: 48px;
+      opacity: 0.5;
+    }
+    &__info{
+      @extend %WS-regular;
+      padding-bottom: 36px;
+      font-size: 1em;
+      line-height: 24px;
+    }
+  }
+  &__info{
+    @include col();
+    @include size(3);
+    @include size-sm(12);
+    @include shift-left(0.5);
+    @include shift-sm-left(0);
+    position: relative;
+    font-size: 16px;
+    @include sm-block{
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: space-between;
+    }
+    @include xs-block{
+      flex-direction: column;
+    }
+
+    &:before{
+      content: "";
+      height: 14.5em;
+      width: 1px;
+      background: #fff;
+      display: block;
+      position: absolute;
+      left: -4em;
+      top: 0;
+      @include sm-block{
+        display: none;
+      }
+    }
+    .e-details{
+      @extend %WS-regular;
+      font-size: 16px;
+
+      &__title{
+        padding-bottom: 10px;
+        display: block;
+        line-height: 24px;
+        opacity: 0.5;
+        @include s-block{
+          padding-bottom: 0;
+        }
+      }
+      &__point{
+        padding-bottom: 36px;
+        display: block;
+        @include s-block{
+          padding-bottom: 16px;
+        }
+      }
+    }
+  }
+}
+.resource{
+  padding: 110px 0 130px;
+  &__header{
+    @extend %WS-bold;
+    padding-bottom: 100px;
+    text-align: center;
+    font-size: 48px;
+    line-height: 48px;
+    color: #8E0000;
+    @include sm-block{
+      padding-bottom: 75px;
+      font-size: 36px;
+      line-height: 36px;
+    }
+    @include s-block{
+      padding-bottom: 50px;
+      font-size: 32px;
+      line-height: 32px;
+    }
+  }
+  &__wrapper{
+    @include row-flex();
+  }
+  .resource-bl{
+    @include col();
+    @include size(5.7);
+    @include size-s(11);
+    @extend %WS-regular;
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+    @include sm-block{
+      font-size: 18px;
+    }
+    @include s-block{
+      font-size: 16px;
+    }
+
+    &_left{
+      @include shift-right(0.3);
+      @include shift-s-right(0);
+      @include s-block{
+        margin-bottom: 50px;
+      }
+    }
+
+    &_right{
+       @include shift-left(0.3);
+       @include shift-s-left(0);
+    }
+
+    &__sub{
+      color: #930046;
+      font-size: 1em;
+    }
+    &__title{
+      @extend %WS-bold;
+      color: #000;
+      font-size: 2em;
+      line-height: 48px;
+      padding-bottom: 36px;
+      @include sm-block{
+        padding-bottom: 26px;
+      }
+      @include s-block{
+        padding-bottom: 18px;
+      }
+    }
+    &__info{
+      padding-bottom: 36px;
+      font-size: 16px;
+      line-height: 24px;
+      @include sm-block{
+        padding-bottom: 24px;
+        font-size: 14px;
+        line-height: 16px;
+      }
+    }
+    .btn-bott{
+      margin-top: auto;
+    }
+  }
+}
+.footer{
+  @extend %WS-light;
+  padding: 40px 0 30px;
+  background-color: #000;
+  &__wrapper{
+    display: flex;
+    justify-content: space-between;
+    @include s-block{
+      flex-direction: column;
+      align-items: center;
+    }
+    .footer-logo{
+      padding-right: 20px;
+      width: 230px;
+      height: 94px;
+      @include sm-block{
+        width: 180px;
+        height: 74px;
+      }
+    }
+    .company-info{
+      @include s-block{
+        padding: 20px 0;
+        text-align: center;
+      }
+      &__p{
+        letter-spacing: .5px;
+        font-size: 16px;
+        line-height: 24px;
+        color: #fff;
+        opacity: 0.5;
+      }
+    }
+    .footer-nav{
+      display: flex;
+      flex-shrink: 0;
+
+      .footer-site{
+        @extend %WS-regular;
+        font-size: 16px;
+        color: #fff;
+        @include sm-block{
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+        @include s-block{
+          text-align: center;
+        }
+        &__item{
+          display: inline-block;
+          padding: 0 10px;
+          text-transform: uppercase;
+          transition: color .3s;
+          @include s-block{
+            padding: 5px 0;
+          }
+          &:hover{
+            color: #fff;
+            opacity: 0.5;          }
+          &:nth-child(-n+3){
+            border-right: 1px solid #fff;
+            @include sm-block{
+              border-right: none;
+            }
+          }
+          a{
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+  .footer-bott{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    @include sm-block{
+      font-size: 14px;
+    }
+    @include s-block{
+      flex-direction: column;
+      align-items: center;
+    }
+    &__copy{
+      letter-spacing: .5px;
+      line-height: 24px;
+      color: #fff;
+      opacity: 0.5;
+      @include s-block{
+        margin-top: 20px;
+        order: 1;
+        text-align: center;
+      }
+    }
+    .country{
+      color: #fff;
+      @include s-block{
+        order: 0;
+      }
+      &__name{
+        padding-right: 10px;
+        opacity: .7;
+        vertical-align: middle;
+      }
+      &__flag{
+        width: 25px;
+        height: 25px;
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+.work-on{
+  padding: 110px 0 130px;
+  background-image: url(../images/touch/what-we-do.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &__header{
+    @extend %WS-bold;
+    text-transform: uppercase;
+    font-size: 60px;
+    color: #a11649;
+    @include s-block{
+      font-size: 26px;
+    }
+  }
+
+  &__sub{
+    @extend %WS-bold;
+    padding-bottom: 40px;
+    font-size: 24px;
+    color: #000;
+    @include xs-block{
+      padding-bottom: 50px;
+    }
+    &:before{
+      content: "";
+      margin: 40px 0 30px;
+      display: block;
+      height: 4px;
+      background: #ad173d;
+      max-width: 182px;
+    }
+  }
+  .slider{
+    &__wrapper{
+      position: relative;
+    }
+    &__slides{
+      margin: 0 auto;
+      width: 920px;
+      overflow: hidden;
+      @media screen and (max-width: 1030px){
+        width: 620px;
+      }
+      @media screen and (max-width: 760px){
+        width: 320px;
+      }
+    }
+    &__item{
+      position: relative;
+      display: flex;
+      justify-content: center;
+      @media screen and (max-width: 1030px){
+        margin-left: 300px;
+      }
+      @media screen and (max-width: 730px){
+        margin-left: 0;
+      }
+      &:before{
+        content: "";
+        position: absolute;
+        left: 0;
+        height: 100%;
+        width: 9px;
+        background-color: #fff;
+        z-index: 5;
+        @media screen and (max-width: 1030px){
+          left: -300px;
+        }
+        @media screen and (max-width: 730px){
+          left: 0;
+        }
+      }
+      &:after{
+        content: "";
+        position: absolute;
+        top: 10px;
+        right: 0;
+        height: 100%;
+        width: 9px;
+        background-color: #c77a00;
+        z-index: 5;
+      }
+    }
+  }
+}
+
+.box{
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin: 10px 0;
+  padding: 0 15px;
+  min-width: 300px;
+  @extend %WS-regular;
+  position: relative;
+  border: 2px solid #a11649;
+  cursor: pointer;
+  transition: all .3s;
+  background: #fff;
+
+  &:hover{
+    transform: scale(1.05);
+    z-index: 10;
+  }
+
+  &:after{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #a11649;
+    top: 80px;
+    left: 0;
+  }
+  &__header{
+    padding: 20px 10px;
+    color: #000;
+    font-size: 18px;
+  }
+  &__about{
+    margin-top: auto;
+    padding: 20px 10px 30px;
+    font-size: 12px;
+  }
+  &__btn{
+    @extend %WS-bold;
+    margin-bottom: 20px;
+    padding: 15px 0;
+    background: #a11649;
+    display: block;
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+    letter-spacing: 1px;
+    border: 2px solid #a11649;
+    transition: background .3s;
+    &:hover{
+      background-color: #fff;
+      color: #87123d;
+    }
+  }
+}
+.slider-btn{
+  position: absolute;
+  top: 60%;
+  border: 30px solid transparent;
+  cursor: pointer;
+  &_prev{
+    border-right: 40px solid #8b113b;
+    @include xs-block{
+      left: -40px;
+    }
+  }
+  &_next{
+    right: 0;
+    border-left: 40px solid #8b113b;
+    @include xs-block{
+      right: -40px;
+    }
+  }
+}
+
+.popup{
+  display: none;
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .6);
+  z-index: 50;
+  transition: all .5s;
+
+  &_show{
+    display: block;
+  }
+  &__input{
+    @extend %WS-bold;
+    padding: 2vh 3vw;
+    position: absolute;
+    top: -20%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 75vw;
+    height: 10vh;
+    margin: auto;
+    background-color: #fff;
+    opacity: 1;
+    font-size: 4vh;
+    color: #000;
+    @include sm-block{
+      height: 7vh;
+    }
+  }
+  &__close{
+    position: absolute;
+    top: 5vh;
+    right: 5vw;
+    color: #fff;
+    font-size: 5vh;
+    cursor: pointer;
+  }
+}
+
+.fixed-top-menu{
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  background: #fff;
+  z-index: 100;
+  .top-nav__item{
+    a{
+      color: #000;
+    }
+    &:nth-child(-n+3){
+      border-color: #000;
+    }
+    &:last-child{
+      a{
+        color: #fff;
+      }
+    }
+  }
+  .lang__item{
+    a{
+      color: #fff;
+    }
+  }
+  .main-nav__item{
+    a{
+      color: #000;
+    }
+  }
+  .header__menu{
+    padding-bottom: 15px;
+  }
+  .logo{
+    background-image: url(../images/touch/sigma-logo-black.png);
+  }
+  .menu-btn__icon{
+    background: #d48604;
+    &:before, &:after {
+      background: #d48604;
+    }
+  }
+}
+.nav-up{
+  top: -130px;
+}
+.nav-down{
+  top: 0!important;
+}
+
+.link-un{
+  &_yellow{
+    @include link-hover(#D48604);
+  }
+  &_white{
+    @include link-hover(#fff);
+  }
+}
+
+
